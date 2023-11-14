@@ -1,5 +1,6 @@
 from django.shortcuts import render, render
-from clientes.forms import Cliente, Propiedad, Cartera
+from clientes.forms import Crear_cliente, Propiedad, Cartera
+from clientes.models import Cliente
 
 
 # Create your views here.
@@ -9,12 +10,11 @@ def clientes_inicio(request):
 
 def clientes(request):
     if request.method =='POST':
-        formulario=Cliente(request.POST)
+        formulario=Crear_cliente(request.POST)
         if formulario.is_valid():
             info_limpia = formulario.cleaned_data
                     
             nombre_cliente=info_limpia.get('nombre_cliente')
-            print(nombre_cliente)
             nombre_popriedad=info_limpia.get('nombre_popriedad')
             num_inmuebles=info_limpia.get('num_inmuebles')
             años_antiguedad=info_limpia.get('años_antiguedad')
@@ -29,10 +29,10 @@ def clientes(request):
                 )
             
             cliente.save()
-            return render(request,'clientes/cliente.html',{'formulario':formulario})
+            return render(request,'clientes/clientes.html',{'formulario':formulario})
         else:
             return render(request,'clientes/clientes.html',{'formulario':formulario})
-    formulario=Cliente()
+    formulario=Crear_cliente()
     return render(request,'clientes/clientes.html',{'formulario':formulario})
     # return render(request,'clientes/clientes.html',{})
 
