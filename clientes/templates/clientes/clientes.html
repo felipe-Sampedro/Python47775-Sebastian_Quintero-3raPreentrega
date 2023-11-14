@@ -8,13 +8,11 @@
 
 {% block main %}
 
-
 <form action="" method="POST" class="formulario row mx-5 col-6">
     {% csrf_token %}
     <H1>CLIENTES</H1>
     {{formulario}}
     <input type="submit" value="Crear" class="my-4">
 </form>
-
 
 {% endblock main %}

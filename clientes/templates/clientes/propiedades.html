@@ -3,3 +3,15 @@
 {% block head_tittle %}
 <title>Propiedades</title>
 {% endblock head_tittle %}
+
+
+{% block main %}
+
+<form action="" method="POST" class="formulario row mx-5 col-6">
+    {% csrf_token %}
+    <H1>PROPIEDADES</H1>
+    {{formulario}}
+    <input type="submit" value="Crear" class="my-4">
+</form>
+
+{% endblock main %}

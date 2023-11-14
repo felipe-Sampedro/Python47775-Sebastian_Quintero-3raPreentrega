@@ -2,14 +2,15 @@ from django.db import models
 
 # Create your models here.
 class Cliente(models.Model):
+    num_doc=models.IntegerField(default=0000)
     nombre_cliente=models.CharField(max_length=40)
     nombre_popriedad=models.CharField(max_length=80)
     num_inmuebles=models.IntegerField()
-    años_antiguedad=models.IntegerField()
+    anios_antiguedad=models.IntegerField()
     saldo_cartera=models.IntegerField()
     
     def __str__(self):
-        return f'{self.id} - {self.nombre_cliente} - {self.num_inmuebles} - {self.años_amtoguedad} - {self.saldo_cartera}'
+        return f'{self.id} - {self.num_doc} - {self.nombre_cliente} - {self.num_inmuebles} - {self.anios_antiguedad} - {self.saldo_cartera}'
     
 class Propiedad(models.Model):
     tipo=models.CharField(max_length=40)
