@@ -10,7 +10,7 @@ class Cliente(models.Model):
     saldo_cartera=models.IntegerField()
     
     def __str__(self):
-        return f'{self.id} - {self.num_doc} - {self.nombre_cliente} - {self.num_inmuebles} - {self.anios_antiguedad} - {self.saldo_cartera}'
+        return f'{self.id} - {self.num_doc} - {self.nombre_cliente} - {self.num_inmuebles} inmuebles - {self.anios_antiguedad} años antiguedad - {self.saldo_cartera} pesos saldo cartera'
     
 class Propiedad(models.Model):
     tipo=models.CharField(max_length=40)

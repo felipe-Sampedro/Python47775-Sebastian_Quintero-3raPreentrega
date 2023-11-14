@@ -24,5 +24,5 @@ class Crear_cartera(forms.Form):
     
     
 class Buscar_cliente(forms.Form):
-    nombre_cliente=forms.CharField(max_length=40)
+    Cliente=forms.CharField(max_length=40)
  

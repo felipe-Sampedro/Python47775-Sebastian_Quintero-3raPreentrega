@@ -14,8 +14,8 @@ def clientes(request):
             info_limpia = formulario.cleaned_data
             
             num_doc=info_limpia.get('num_doc')
-            nombre_cliente=info_limpia.get('nombre_cliente')
-            nombre_popriedad=info_limpia.get('nombre_popriedad')
+            nombre_cliente=info_limpia.get('nombre_cliente').lower()
+            nombre_popriedad=info_limpia.get('nombre_popriedad').lower()
             num_inmuebles=info_limpia.get('num_inmuebles')
             anios_antiguedad=info_limpia.get('anios_antiguedad')
             saldo_cartera=info_limpia.get('saldo_cartera')
@@ -89,8 +89,15 @@ def cartera(request):
 
 
 def buscar(request):
+    cliente_buscar=request.GET.get('Cliente')
+    print(request.GET)
+    if cliente_buscar:
+        lista_clientes=Cliente.objects.filter(nombre_cliente__icontains=cliente_buscar)
+    else:
+        print('no lo esta cogiendo')
+        lista_clientes=Cliente.objects.all()
+        
     formulario=Buscar_cliente()
-    lista_clientes=Cliente.objects.all()
     return render(request,'clientes/buscar.html',{'lista_clientes':lista_clientes,'formulario':formulario})
 
 def verificacion(request,modelo):
